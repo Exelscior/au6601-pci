@@ -692,7 +692,7 @@ static void au6601_cmd_irq(struct au6601_host *host, u32 intmask)
 static void au6601_data_irq(struct au6601_host *host, u32 intmask)
 {
 	if (!host->data) {
-		/* FIXME: Ist is same for AU6601
+		/* FIXME: It is same for AU6601
 		* The "data complete" interrupt is also used to
 		* indicate that a busy state has ended. See comment
 		* above in au6601_cmd_irq().

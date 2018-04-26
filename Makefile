@@ -25,6 +25,7 @@
 #
 
 TARGET_MODULE := au6601-pci
+KVERSION := $(shell uname -r)
 
 #EXTRA_CFLAGS := -Idrivers/scsi 
 
@@ -33,9 +34,9 @@ obj-m += $(TARGET_MODULE).o
 $(TARGET_MODULE)-objs := au6601.o
 
 default:
-	make -C /lib/modules/$(shell uname -r)/build/ SUBDIRS=$(PWD) modules
+	make -C /lib/modules/$(KVERSION)/build/ SUBDIRS=$(PWD) modules
 install:
-	cp $(TARGET_MODULE).ko /lib/modules/$(shell uname -r)/kernel/drivers/scsi -f
+	cp $(TARGET_MODULE).ko /lib/modules/$(KVERSION)/kernel/drivers/scsi -f
 clean:
 	rm -f *.o *.ko
 	rm -f $(TARGET_MODULE).mod.c
